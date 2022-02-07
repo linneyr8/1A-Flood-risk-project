@@ -83,8 +83,3 @@ def rivers_by_station_number(stations, N):
         else:
             list_complete = True
 
-<<<<<<< HEAD
-    return output
-=======
-
->>>>>>> 0b38eac8d01438aaf7d6476de29d724fbc8359c1

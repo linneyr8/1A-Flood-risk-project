@@ -6,7 +6,6 @@ from floodsystem.station import inconsistent_typical_range_stations
 from floodsystem.station import MonitoringStation 
 stations = build_station_list 
 
-
 def run():
     # Add a fake station to test the consitency with typical range wrong way round
     fake_station = MonitoringStation(
@@ -30,4 +29,4 @@ def run():
     print(inconsistent_station_names)
 if __name__ == "__main__":
     print("*** Task 1F: CUED Part 1A Flood Warning System ***") 
-    run()  
+    run()
