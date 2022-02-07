@@ -32,3 +32,14 @@ def test_stations_by_distance():
         river = "r3",
         town = "t3")
     test_stations = [fake_station1, fake_station2, fake_station3]
+
+    list_1 = stations_by_distance(test_stations, p)
+    assert len(list_1) == 3
+    assert len(list_1[0]) == 2
+    assert isinstance(list_1[0][0], MonitoringStation) is True
+    assert isinstance(list_1[0][1], float) is True
+
+    #check list is sorted
+    assert list_1[0][0] == fake_station1
+    assert list_1[1][0] == fake_station2
+    assert list_1[2][0] == fake_station3
