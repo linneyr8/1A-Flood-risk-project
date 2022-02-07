@@ -34,7 +34,7 @@ class TestClass:
         assert sorted_stations[0][0:2] == ('Test Station 1', 'test_town_1')
         assert sorted_stations[1][0:2] == ('Test Station 2', 'test_town_2')
         
-     def test_stations_within_radius(self):
+    def test_stations_within_radius(self):
         station1 = MonitoringStation(station_id='test_station_id_1',
                                      measure_id='test_measure_id_1',
                                      label='Test Station 1',
