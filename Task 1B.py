@@ -12,4 +12,6 @@ def run():
     print(x[:10])
     print(x[-10:])  
     
-run()  
+if __name__ == "__main__":
+    print("*** Task 1B: CUED Part 1A Flood Warning System ***") 
+    run()  
