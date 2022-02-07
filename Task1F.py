@@ -10,13 +10,13 @@ stations = build_station_list
 def run():
     # Add a fake station to test the consitency with typical range wrong way round
     fake_station = MonitoringStation(
-        station_id= 'Fake Station',
+        station_id= "Fake Station",
         measure_id= "hello",
-        label='Fake Station',
-        coord=(float(51), float(52))
-        typical_range=(float(52), float(12))
+        label="Fake Station",
+        coord=(float(51), float(52)),
+        typical_range=(float(52), float(12)),
         river="river",
-        town= "town" )
+        town= "town")
 
     stations.append(fake_station)
 
