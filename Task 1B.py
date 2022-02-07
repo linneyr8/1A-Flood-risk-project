@@ -10,9 +10,6 @@ def run():
 
     x = stations_by_distance(stations, p)
     print(x[:10])
-    print(x[-10:])
-
-if __name__ == "__main__":
-    print("*** Task 1B: CUED Part 1A Flood Warning System ***") 
-    run()  
+    print(x[-10:])  
     
+run()  
