@@ -1,5 +1,6 @@
 from floodsystem.geo import stations_by_distance, stations_within_radius
 from floodsystem.stationdata import build_station_list
+from haversine import haversine
 
 stations = build_station_list()
 
