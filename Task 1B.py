@@ -11,7 +11,7 @@ def run():
     print(x[-10:])
 
 if __name__ == "__main__":
-    print("* Task 1B: CUED Part 1A Flood Warning System *") 
+    print("*** Task 1B: CUED Part 1A Flood Warning System ***") 
     run()  
 
 
