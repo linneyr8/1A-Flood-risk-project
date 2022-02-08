@@ -49,13 +49,20 @@ def stations_by_river(stations):
 
     return dictionary
 
+
 def rivers_with_station(stations):
-    """rivers_with_station returns the names of rivers with a monitoring station without repeats"""
-    stationsRivers = set()
-    for station in stations:
-        stationsRivers.add(station.rivers)
-    stationRivers = sorted(stationsRivers)
-    return stationRivers 
+    """
+    Function that, given a list of station objects,
+    returns a container with the names of the rivers with a monitoring station.
+    
+    Args:
+        stations (list): List of stations (MonitoringStation).
+    
+    Returns:
+        set: Set of names of rivers with a monitoring station.
+    """
+
+    return {station.river for station in stations}
 
 def rivers_by_station_number(stations, N):
     """rivers_by_station returns the sorted list of tuples of the names of rivers and number of stations """
