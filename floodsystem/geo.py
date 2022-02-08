@@ -13,9 +13,11 @@ from .station import MonitoringStation
 from floodsystem.stationdata import build_station_list
 
 def stations_by_distance(stations, p):
+    #build list
     stations = build_station_list()
     names = []
     distance = []
+    #build list of (name, distance)
     for station in stations:
         names.append(station.name)
         distance.append(haversine(p, station.coord))
@@ -24,6 +26,7 @@ def stations_by_distance(stations, p):
     return tuples
 
 def stations_within_radius(stations, centre, r):
+    #build list
     stations = build_station_list()
     names = []
     for station in stations:

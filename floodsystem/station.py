@@ -28,15 +28,6 @@ class MonitoringStation:
         self.town = town
 
         self.latest_level = None
-    
-    def typical_range_consistent(self):
-        """typical_range_consistent returns true if the data is consistent returns false if the data is inconsitent"""
-        if self.typical_range is None:
-            return False
-        elif self.typical_range[0] > self.typical_range[1]:
-            return False
-        else:
-            return True
 
     def __repr__(self):
         d = "Station name:     {}\n".format(self.name)
@@ -47,17 +38,28 @@ class MonitoringStation:
         d += "   river:         {}\n".format(self.river)
         d += "   typical range: {}".format(self.typical_range)
         return d
-   
+
+    def typical_range_consistent(self):
+        """typical_range_consistent returns true if the data is consistent returns false if the data is inconsistent"""
+        b = self.typical_range
+        if b == None:
+            return False
+        elif b[1] < b[0]:
+            return False
+        else:
+            return True
 
 def inconsistent_typical_range_stations(stations):
     """inconsistent_typical_range_stations returns list of stations that has inconsistent data"""
-    inconsistent_list= []
-    for MonitoringStation in stations:
-        n= MoitoringStation.typical_range_consistent()
-        if n== False:
-            inconsistent_list.append(MonitoringStation.name)
-        return inconsistent_list     
-         
+    stations_inconsistent = []
+    for i in stations:
+        if MonitoringStation.typical_range_consistent(i) == False: 
+            stations_inconsistent.append(i.name)
+
+        else:
+            continue
+        stations_inconsistent.sort()
+        return stations_inconsistent
     
     
     
