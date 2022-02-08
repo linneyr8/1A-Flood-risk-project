@@ -17,13 +17,11 @@ def run():
 
         print(len(rivers))
         print(sorted(rivers)[:10])
-        
-        print()
 
         stations_on_river = stations_by_river(stations)
         for river in ['River Aire', 'River Cam', 'River Thames']:
-                print(river + ':')
-                print(sorted([i.name for i in stations_on_river[river]]))
+                print(rivers + ':')
+                print(sorted([i.name for i in stations_on_river[rivers]]))
                 
                                 
 if __name__ == "__main__":
