@@ -58,8 +58,8 @@ def inconsistent_typical_range_stations(stations):
 
         else:
             continue
-        stations_inconsistent.sort()
-        return stations_inconsistent
+    stations_inconsistent.sort()
+    return stations_inconsistent
     
     
     
