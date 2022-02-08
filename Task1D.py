@@ -20,7 +20,7 @@ def run():
 
         stations_on_river = stations_by_river(stations)
         for river in ['River Aire', 'River Cam', 'River Thames']:
-                print(rivers + ':')
+                print(rivers , ':')
                 print(sorted([i.name for i in stations_on_river[rivers]]))
                 
                                 
