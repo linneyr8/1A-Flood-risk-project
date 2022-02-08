@@ -52,10 +52,16 @@ class MonitoringStation:
 def inconsistent_typical_range_stations(stations):
     """inconsistent_typical_range_stations returns list of stations that has inconsistent data"""
     inconsistent_list= []
-    for i in range(len(stations)):
-        if stations[i].typical_range_consistent() == False:
-            inconsistent_list.append(stations[i].name)
-        return inconsistent_list
+    for MonitoringStation in stations:
+        n= MoitoringStation.typical_range_consistent()
+        if n== False:
+            inconsistent_list.append(MonitoringStation.name)
+        return inconsistent_list     
+         
+    
+    
+    
+  
 
 
 
