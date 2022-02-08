@@ -86,7 +86,7 @@ def rivers_by_station_number(stations, N):
             name_n_num.append((river,n))
             n=0 
             
-    name_n_num_1 = sorted_by_key(name_n_num, 1, reverse=true)
+    name_n_num_1 = sorted_by_key(name_n_num, 1, reverse=True)
     
     temp_0 = name_n_num_1[N]
     temp_1 = []
