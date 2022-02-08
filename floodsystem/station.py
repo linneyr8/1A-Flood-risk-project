@@ -52,7 +52,7 @@ def inconsistent_typical_range_stations(stations):
     """inconsistent_typical_range_stations returns list of stations that has inconsistent data"""
     inconsistent_list= []
     for i in range(len(stations)):
-        if stations[i].typicl_range_consitent() == False:
+        if stations[i].typical_range_consitent() == False:
             inconsistent_list.append(station[i].name)
         return inconsistent_list
 
