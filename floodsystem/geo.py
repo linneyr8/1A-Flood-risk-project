@@ -69,34 +69,23 @@ def rivers_with_station(stations):
 
 def rivers_by_station_number(stations, N):
     """rivers_by_station returns the sorted list of tuples of the names of rivers and number of stations """
+    top_list = []
+    river_dict = stations_by_river(stations)
     
-    name_of_rivers = set()  #so no repeats of the names of rivers occurr
-    name_n_num = []  #unsorted
-    name_n_num_1 = [] #sorted
-    name_n_num_N = [] #final list with repitiion check
-    n=0 #number of stations count
+    station_number = []
+    river_key = list(river_dict.keys())
+    for river in river_dict:
+        station_number.append(len(river_dict[river]))
+
+    bob = list(zip(river_key, station_number))
+    bob.sort(key = lambda x:x[1])
+    while bob[len(bob)-N][1] == bob[len(bob)-(N+1)][1]:
+        N = N+1
+
+    top_list = bob[len(bob)-N:len(bob)]
+
+    return top_list
     
-    for names in stations:
-        name_of_rivers.add(names.river)
-        
-    for river in name_of_rivers:
-        for object in stations:
-            if river == object.river:
-                n += 1
-            name_n_num.append((river,n))
-            n=0 
-            
-    name_n_num_1 = sorted_by_key(name_n_num, 1, reverse=True)
-    
-    temp_0 = name_n_num_1[N]
-    temp_1 = []
-    for i in range(0, N-1):
-        temp_1.append(name_n_num_1[i])
-    [temp_1.append(item) for item in name_n_num_1 if item[1]]
-    
-    [name_n_num_N.append(j) for j in temp_1 if j not in name_n_num_N]
-    
-    return name_n_num_N
     
     
      
