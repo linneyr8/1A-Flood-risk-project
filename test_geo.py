@@ -133,6 +133,3 @@ class TestClass:
                                                                                          ("River 3", 1)]
         assert rivers_by_station_number([station1, station2, station3, station4], 5) == [("River 2", 2), ("River 1", 1),
                                                                                          ("River 3", 1)]
-
-mytest = TestClass()
-mytest.test_rivers_by_station_number()
