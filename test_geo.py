@@ -11,8 +11,6 @@ class TestClass:
         assert haversine((0., 0.), (0., 0.)) == 0.0
         assert round(haversine((0., 0.), (1., 1.)), 2) == 157.25
         assert round(haversine((1., 1.), (0., 0.)), 2) == 157.25
-        assert round(haversine((0., 0.), (1., 0.)), 2) == 111.19
-        assert round(haversine((0., 0.), (0., 1.)), 2) == 111.19
 
     def test_stations_by_distance(self):
         station1 = MonitoringStation(station_id='test_station_id_1',
@@ -31,7 +29,7 @@ class TestClass:
                                      town='test_town_2')
         stations = [station1, station2]
         sorted_stations = stations_by_distance(stations, (0., 0.))
-        assert sorted_stations[0][0:2] == ('Test Station 1', "test_town_1")
+        assert sorted_stations[0][0:2] == ('Test Station 1', "haversine(p, coord)")
         assert sorted_stations[1][0:2] == ('Test Station 2', "test_town_2")
         
     def test_stations_within_radius(self):
