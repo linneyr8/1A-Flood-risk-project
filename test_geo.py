@@ -89,8 +89,8 @@ class TestClass:
         assert 'test_river_2' in rivers
 
         stations_on_river = stations_by_river(fake_stations)
-        assert sorted(stations_on_river['test_river_2'], key=lambda x: x.name) == [station2, station3]
-        assert stations_on_river['test_river_1'] == [station1]
+        assert sorted(stations_on_river['test_river_2']) == [station2.name, station3.name]
+        assert stations_on_river['test_river_1'] == [station1.name]
 
 
     def test_rivers_by_station_number(self):

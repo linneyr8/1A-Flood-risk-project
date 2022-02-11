@@ -14,7 +14,7 @@ from floodsystem.stationdata import build_station_list
 
 def stations_by_distance(stations, p):
     #build list
-    stations = build_station_list()
+    # stations = build_station_list()
     names = []
     distance = []
     #build list of (name, distance)
