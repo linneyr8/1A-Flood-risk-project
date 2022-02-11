@@ -27,10 +27,10 @@ class TestClass:
                                      typical_range=(0., 1.),
                                      river='test_river_2',
                                      town='test_town_2')
-        stations = [station1, station2]
-        sorted_stations = stations_by_distance(stations, (0., 0.))
-        assert sorted_stations[0][0:2] == ('Test Station 1', "haversine(p, coord)")
-        assert sorted_stations[1][0:2] == ('Test Station 2', "test_town_2")
+        fake_stations = [station1, station2]
+        sorted_stations = stations_by_distance(fake_stations, (0., 0.))
+        assert sorted_stations[0][0:2] == ('Test Station 1', haversine((0., 0.), station1.coord))
+        assert sorted_stations[1][0:2] == ('Test Station 2', haversine((0., 0.), station2.coord))
         
     def test_stations_within_radius(self):
         station1 = MonitoringStation(station_id='test_station_id_1',
@@ -54,8 +54,8 @@ class TestClass:
                                      typical_range=(0., 1.),
                                      river='test_river_3',
                                      town='test_town_3')
-        stations = [station1, station2, station3]
-        stations_within = sorted([i.name for i in stations_within_radius(stations, (0., 0.), 200)])
+        fake_stations = [station1, station2, station3]
+        stations_within = sorted([i.name for i in stations_within_radius(fake_stations, (0., 0.), 200)])
         assert len(stations_within) == 2
         assert stations_within[0] == "Test Station 1"
         assert stations_within[1] == "Test Station 2"
@@ -82,13 +82,13 @@ class TestClass:
                                      typical_range=(0., 1.),
                                      river='test_river_2',
                                      town='test_town_3')
-        stations = [station1, station2, station3]
-        rivers = rivers_with_station(stations)
+        fake_stations = [station1, station2, station3]
+        rivers = rivers_with_station(fake_stations)
         assert len(rivers) == 2
         assert 'test_river_1' in rivers
         assert 'test_river_2' in rivers
 
-        stations_on_river = stations_by_river(stations)
+        stations_on_river = stations_by_river(fake_stations)
         assert sorted(stations_on_river['test_river_2'], key=lambda x: x.name) == [station2, station3]
         assert stations_on_river['test_river_1'] == [station1]
 
