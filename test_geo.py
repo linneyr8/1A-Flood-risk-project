@@ -55,10 +55,10 @@ class TestClass:
                                      river='test_river_3',
                                      town='test_town_3')
         fake_stations = [station1, station2, station3]
-        stations_within = sorted([i.name for i in stations_within_radius(fake_stations, (0., 0.), 200)])
-        assert len(stations_within) == 2
-        assert stations_within[0] == "Test Station 1"
-        assert stations_within[1] == "Test Station 2"
+        list = stations_within_radius(fake_stations, (0., 0.), 200)
+        assert len(list) == 2
+        assert list[0] == "Test Station 1"
+        assert list[1] == "Test Station 2"
 
     def test_rivers_and_stations(self):
         station1 = MonitoringStation(station_id='test_station_id_1',
@@ -133,3 +133,6 @@ class TestClass:
                                                                                          ("River 3", 1)]
         assert rivers_by_station_number([station1, station2, station3, station4], 5) == [("River 2", 2), ("River 1", 1),
                                                                                          ("River 3", 1)]
+
+mytest = TestClass()
+mytest.test_rivers_by_station_number()

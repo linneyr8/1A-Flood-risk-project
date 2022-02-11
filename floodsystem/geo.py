@@ -80,7 +80,7 @@ def rivers_by_station_number(stations, N):
     bob = list(zip(river_key, station_number))
     bob.sort(key = lambda x:x[1])
     while bob[len(bob)-N][1] == bob[len(bob)-(N+1)][1]:
-        N = N+1
+     N = N+1
 
     top_list = bob[len(bob)-N:len(bob)]
 
