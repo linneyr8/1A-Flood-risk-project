@@ -10,7 +10,8 @@ if __name__ == "__main__":
     print("*** Task 1E: CUED Part 1A Flood Warning System ***")
 
     stations = build_station_list()
-    N = 9
+    N = 10
+    
     station_number = rivers_by_station_number(stations, N)
 
     print(station_number)
