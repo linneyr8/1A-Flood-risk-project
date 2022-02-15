@@ -83,7 +83,7 @@ def rivers_by_station_number(stations, N):
      N = N+1
 
     top_list = bob[len(bob)-N:len(bob)]
-
+    top_list=sorted_by_key(top_list, 1, reverse=True)
     return top_list
     
     
