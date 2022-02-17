@@ -60,3 +60,7 @@ def inconsistent_typical_range_stations(stations):
             continue
     stations_inconsistent.sort()
     return stations_inconsistent
+
+def relative_water_level(self):
+    return (self.latest_level - self.typical_range[0])/(self.typical_range[1] - self.typical_range[
+        0]) if self.latest_level is not None and self.typical_range_consistent() is True else None
