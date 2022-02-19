@@ -12,4 +12,10 @@ def polyfit(dates, levels, p):
    
    Returns:
       numpy poly1d object: Contains the coefficients of the resulting polynomial 
-      float: The number of days since the origin of the Gregporain Calendar that was shifted to find the polynomial. """
+      float: The number of days since the origin of the Gregporain Calendar that was shifted to find the polynomial."""
+  dates_num = date2num(dates)
+  x = [date - dates_num[-1] for date in dates_num]
+  y = levels
+  p_coeff = np.polyfit(x, y, p)
+  poly = np.poly1d(p_coeff)
+  return poly, dates_num[-1]
