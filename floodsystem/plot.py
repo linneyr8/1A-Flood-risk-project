@@ -2,7 +2,16 @@ from datetime import timedelta
 from os import environ
 
 import numpy as np
-
+from datetime import timedelta
+from os import environ
+from .analysis import polyfit
+from .datafetcher import fetch_measure_levels
+import numpy as np
+from bokeh.io import output_file
+from bokeh.layouts import gridplot
+from bokeh.models import ColumnDataSource, GMapOptions, HoverTool, DatetimeTickFormatter, Span, BoxAnnotation
+from bokeh.plotting import figure, gmap
+from matplotlib.dates import date2num
 
 def plot_water_levels(station, dates, levels):
     output_file(station.name + ".html")
@@ -17,18 +26,8 @@ def plot_water_levels(station, dates, levels):
     return p
 
 def plot_water_level_with_fit(station, dates, levels, p):
-        """
-    Function that makes a graph of the water level over time for a given station with a least-square fit polynomial with a degree of p.
-    Args:
-        station (MonitoringStation): The desired station to graph.
-        dates (list): The list of dates for the x-axis.
-        levels (list): The corresponding water level for each date, y-axis.
-        p (int): The degree of polynomial that is desired.
-    Returns:
-         plot object.
-    """
     output_file(station.name + ".html")
-    graph = figure(title=station.name, x_axis_label="Date", y_axis_label="Water level (m)")
+    graph = figure(title = station.name, x_axis_label="Date", y_axis_label="Water level (m)")
     graph.line(dates, levels, line_width=2)
     poly, d0 = polyfit(dates, levels, p)
     graph.line(dates, [poly(date - d0) for date in date2num(dates)], line_width=2, line_color='orange')
