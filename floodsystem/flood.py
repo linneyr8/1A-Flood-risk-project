@@ -11,8 +11,6 @@ def stations_level_over_threshold(stations, tol):
 def stations_highest_rel_level(stations, N):
     return sorted(filter(
         lambda x: x.relative_water_level() is not None,
-        stations
-    ),
+        stations),
         key=lambda x: x.relative_water_level(),
-        reverse=True
-    )[:N]
+        reverse=True)[:N]
