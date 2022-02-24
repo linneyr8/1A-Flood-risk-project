@@ -2,7 +2,7 @@ from datetime import timedelta
 from os import environ
 
 import numpy as np
-from datetime import timedelta
+import datetime
 from os import environ
 from .analysis import polyfit
 from .datafetcher import fetch_measure_levels
@@ -12,18 +12,23 @@ from bokeh.layouts import gridplot
 from bokeh.models import ColumnDataSource, GMapOptions, HoverTool, DatetimeTickFormatter, Span, BoxAnnotation
 from bokeh.plotting import figure, gmap
 from matplotlib.dates import date2num
+import matplotlib.pyplot as plt
+from floodsystem.stationdata import build_station_list, update_water_levels
+from floodsystem.station import MonitoringStation
+from . import datafetcher
 
 def plot_water_levels(station, dates, levels):
-    output_file(station.name + ".html")
-    p = figure(title = station.name, x_axis_label = "Date", y_axis_label = "Water Level (m)", active_scroll = "wheel_zoom")
-    p.lines(dates, levels, line_width = 1)
-    p.xaxis.formatter = DatetimeTickFormatter(
-        hours = ["%d %B %Y"],
-        days = ["%d %B %Y"],
-        months = ["%d %B %Y"],
-        years = ["%d %B %Y"],)
-    p.xaxis.major_label_orientation = np.pi / 4
-    return p
+    
+    plt.plot(dates, levels)
+    plt.xlabel('date')
+    plt.ylabel('water level(m)')
+    plt.xticks(rotation = 45);
+    plt.title(station.name)
+    plt.legend()
+
+    plt.tight_layout()
+
+    plt.show
 
 def plot_water_level_with_fit(station, dates, levels, p):
     output_file(station.name + ".html")

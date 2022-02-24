@@ -16,7 +16,7 @@ def run():
     dates, levels = fetch_measure_levels(station.measure_id, dt=timedelta(days=2))
     try:
       graph = plot_water_level_with_fit(station, dates, levels, 4)
-      except TypeError:
+    except TypeError:
         print('No data')
         
 if  __name__ == "__main__":
