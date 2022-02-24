@@ -62,9 +62,12 @@ def inconsistent_typical_range_stations(stations):
     return stations_inconsistent
 
 def relative_water_level(self):
-    if self.typical_range_consistent == True:
-        relative_level = (self.latest_level - self.typical_range[0])/(self.typical_range[1] - self.typical_range[0])
-        return relative_level
+        """
+        This method returns the latest water level as a fraction of the typical range.
+        
+        Returns:
+            float: 0.0 (corresponds to a level at the typical low) to 1.0 (corresponds to a level at the typical high)
+        """
 
-    else:
-        return None
+        return (self.latest_level - self.typical_range[0]) / (self.typical_range[1] - self.typical_range[
+            0]) if self.latest_level is not None and self.typical_range_consistent() is True else None
