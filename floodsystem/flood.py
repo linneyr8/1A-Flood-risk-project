@@ -28,11 +28,11 @@ def stations_highest_rel_level(stations, N):
     Returns:
         list: List of stations (MonitoringStation).
     """
-
+    x = stations.relative_water_level()
     return sorted(filter(
-        lambda x: x.relative_water_level() is not None,
+        lambda x: x is not None,
         stations
     ),
-        key=lambda x: x.relative_water_level(),
+        key=lambda x: x,
         reverse=True
     )[:N]
