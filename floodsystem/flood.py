@@ -1,5 +1,5 @@
 from .utils import sorted_by_key
-from floodsystem.station import relative_water_level
+from floodsystem.station import MonitoringStation
 
 def stations_level_over_threshold(stations, tol):
     """
@@ -28,11 +28,10 @@ def stations_highest_rel_level(stations, N):
     Returns:
         list: List of stations (MonitoringStation).
     """
-    x = stations.relative_water_level()
     return sorted(filter(
-        lambda x: x is not None,
+        lambda x: x.relative_water_level() is not None,
         stations
     ),
-        key=lambda x: x,
+        key=lambda x: x.relative_water_level(),
         reverse=True
     )[:N]

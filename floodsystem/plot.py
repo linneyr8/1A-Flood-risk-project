@@ -28,7 +28,7 @@ def plot_water_levels(station, dates, levels):
 
     plt.tight_layout()
 
-    plt.show
+    plt.show()
 
 def plot_water_level_with_fit(station, dates, levels, p):
     output_file(station.name + ".html")
