@@ -12,7 +12,6 @@ def stations_level_over_threshold(stations, tol):
         list: List of tuples in the format (station (MonitoringStation),
         relative water level) sorted by the relative level in descending order.
     """
-
     return sorted_by_key(filter(
         lambda x: x[1] > tol,
         [(station, station.relative_water_level()) for station in stations if
@@ -37,7 +36,7 @@ def stations_highest_rel_level(stations, N):
         reverse=True
     )[:N] 
 
-
+#Nicole Code
 def stations_highest_rel_level_wrong(stations, N):
     """stations_highest_rel_level_wrong(stations, N) returns a list of N stations in which the water level is closest to the maximum"""
     difference = []
@@ -61,7 +60,7 @@ def stations_highest_rel_level_wrong(stations, N):
     return difference[:N]
 
 
-
+#reeces code
 def stations_level_over_threshold(stations, tol):
     """
     Function that returns stations whose latest relative water level is over some threshold.
@@ -72,20 +71,20 @@ def stations_level_over_threshold(stations, tol):
         list: List of tuples in the format (station (MonitoringStation),
         relative water level) sorted by the relative level in descending order.
     """
-
+#function takes argument x and returns the item at index 1 and compares it to the tolerance value. The argument in this case is the the relative water levels of the stations if there is data available" 
     return sorted_by_key(filter(
         lambda x: x[1] > tol,
         [(station, station.relative_water_level()) for station in stations if
          station.relative_water_level() is not None]
     ), 1, reverse=True)
 
-
+#nicoles code 
 """ For task 2G the function that assess the flood risks """
 import numpy as np
 
 def assess_risk(stations):
     """assess_risk(stations), returns a (station.name, station risk) in order of risk """
-
+#
     dtype = [('stationName', str), ('value', float)]
     #computing current level risk
     current_levels = np.array(stations_highest_rel_level_wrong(stations, len(stations)+1))
