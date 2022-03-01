@@ -98,7 +98,7 @@ def assess_risk(stations):
 
     #relative level risk
     #relative level 1.5 risk 1, relative level 0 risk 0
-    rellevels = np.array([[station.name, station.relative_water_level()/1.5] if station.relative_water_level() != None else [station.name, station.relative_water_level()] for station in stations])
+    rellevels = np.array([[station.name, station.relative_water_level()/1.4] if station.relative_water_level() != None else [station.name, station.relative_water_level()] for station in stations])
     
     levelRisk = levelRisk[np.argsort(levelRisk[:,0])]
     rellevels = rellevels[np.argsort(rellevels[:,0])]
