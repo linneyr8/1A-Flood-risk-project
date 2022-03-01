@@ -1,21 +1,30 @@
-"""Flood Submodule"""
-#from curses.ascii import NUL
-import string
-from turtle import st
-from unittest import skip
-import numpy as np
+from .utils import sorted_by_key
+from floodsystem.station import MonitoringStation
 
-from floodsystem.geo import stations_by_river
-from .utils import sorted_by_key  # noqa
+def stations_level_over_threshold(stations, tol):
+    """
+    Function that returns stations whose latest relative water level is over some threshold.
+    Args:
+        stations (list): List of stations (MonitoringStation).
+        tol (float): The threshold relative water level.
+    Returns:
+        list: List of tuples in the format (station (MonitoringStation),
+        relative water level) sorted by the relative level in descending order.
+    """
 
-from .station import MonitoringStation
-
-
-from floodsystem.stationdata import build_station_list, update_water_levels
+    return sorted_by_key(filter(
+        lambda x: x[1] > tol,
+        [(station, station.relative_water_level()) for station in stations if
+         station.relative_water_level() is not None]
+    ), 1, reverse=True)
 
 
 def stations_highest_rel_level(stations, N):
+<<<<<<< HEAD
      """
+=======
+    """
+>>>>>>> ecb9db661f4be95612e9ddd51208dc0b157d4db8
     Function that returns the N number of most at risk stations.
     Args:
         stations (list): List of stations (MonitoringStation).
@@ -23,12 +32,17 @@ def stations_highest_rel_level(stations, N):
     Returns:
         list: List of stations (MonitoringStation).
     """
+<<<<<<< HEAD
      return sorted(filter(
+=======
+    return sorted(filter(
+>>>>>>> ecb9db661f4be95612e9ddd51208dc0b157d4db8
         lambda x: x.relative_water_level() is not None,
         stations
     ),
         key=lambda x: x.relative_water_level(),
         reverse=True
+<<<<<<< HEAD
     )[:N] 
 
 
@@ -72,3 +86,7 @@ def stations_level_over_threshold(stations, tol):
         [(station, station.relative_water_level()) for station in stations if
          station.relative_water_level() is not None]
     ), 1, reverse=True)
+=======
+    )[:N]
+
+>>>>>>> ecb9db661f4be95612e9ddd51208dc0b157d4db8
