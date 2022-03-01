@@ -15,10 +15,21 @@ from floodsystem.stationdata import build_station_list, update_water_levels
 
 
 def stations_highest_rel_level(stations, N):
-    """stations_highest_rel_level(stations, N) returns a list of N stations in which the water level is closest to the maximum"""
-    rel_levels = stations_level_over_threshold(stations, -50)
-
-    return rel_levels[:N]
+     """
+    Function that returns the N number of most at risk stations.
+    Args:
+        stations (list): List of stations (MonitoringStation).
+        N (int): Length of the desired list
+    Returns:
+        list: List of stations (MonitoringStation).
+    """
+     return sorted(filter(
+        lambda x: x.relative_water_level() is not None,
+        stations
+    ),
+        key=lambda x: x.relative_water_level(),
+        reverse=True
+    )[:N] 
 
 
 def stations_highest_rel_level_wrong(stations, N):
@@ -46,27 +57,18 @@ def stations_highest_rel_level_wrong(stations, N):
 
 
 def stations_level_over_threshold(stations, tol):
-    """returns a list of tuples containing (station, relative water level at the station) 
-    for which the relative water level is over tol. tuples are sorted by relative level in descending order"""
+    """
+    Function that returns stations whose latest relative water level is over some threshold.
+    Args:
+        stations (list): List of stations (MonitoringStation).
+        tol (float): The threshold relative water level.
+    Returns:
+        list: List of tuples in the format (station (MonitoringStation),
+        relative water level) sorted by the relative level in descending order.
+    """
 
-    #update_water_levels(stations)
-
-    #set up empty list
-    stations_over_tol = []
-
-    #iterate through all stations and check if relative level is over tol
-    for station in stations:
-        #print('tring if')
-        if station.typical_range_consistent() and (station.relative_water_level() != None):
-            #print("consistent", station)
-            if (station.relative_water_level() > tol):
-                #print('adding station' , station)
-                stations_over_tol.append((station, station.relative_water_level()))
-        else:
-            pass
-    
-    #sort by relative level
-    stations_over_tol = sorted(stations_over_tol, key = lambda x:-x[1])
-    
-
-    return 
+    return sorted_by_key(filter(
+        lambda x: x[1] > tol,
+        [(station, station.relative_water_level()) for station in stations if
+         station.relative_water_level() is not None]
+    ), 1, reverse=True)
