@@ -1,5 +1,6 @@
 from .utils import sorted_by_key
 from floodsystem.station import MonitoringStation
+from floodsystem.stationdata import update_water_levels
 
 def stations_level_over_threshold(stations, tol):
     """
@@ -20,11 +21,7 @@ def stations_level_over_threshold(stations, tol):
 
 
 def stations_highest_rel_level(stations, N):
-<<<<<<< HEAD
      """
-=======
-    """
->>>>>>> ecb9db661f4be95612e9ddd51208dc0b157d4db8
     Function that returns the N number of most at risk stations.
     Args:
         stations (list): List of stations (MonitoringStation).
@@ -32,17 +29,12 @@ def stations_highest_rel_level(stations, N):
     Returns:
         list: List of stations (MonitoringStation).
     """
-<<<<<<< HEAD
      return sorted(filter(
-=======
-    return sorted(filter(
->>>>>>> ecb9db661f4be95612e9ddd51208dc0b157d4db8
         lambda x: x.relative_water_level() is not None,
         stations
     ),
         key=lambda x: x.relative_water_level(),
         reverse=True
-<<<<<<< HEAD
     )[:N] 
 
 
@@ -86,7 +78,3 @@ def stations_level_over_threshold(stations, tol):
         [(station, station.relative_water_level()) for station in stations if
          station.relative_water_level() is not None]
     ), 1, reverse=True)
-=======
-    )[:N]
-
->>>>>>> ecb9db661f4be95612e9ddd51208dc0b157d4db8
