@@ -84,14 +84,15 @@ import numpy as np
 
 def assess_risk(stations):
     """assess_risk(stations), returns a (station.name, station risk) in order of risk """
-#
+#dtype 
     dtype = [('stationName', str), ('value', float)]
-    #computing current level risk
+    #computing current level risk= creating a array of data of stations of N stations in which the water level is closest to the maximum. Iterating over the list of stations.  
     current_levels = np.array(stations_highest_rel_level_wrong(stations, len(stations)+1))
     
-    #1m above max has a risk of 1, 0.4 m below max has risk of 0
+    #1m of the water above max level has a risk of 1, 0.4 m below max has risk of 0. Trying to get rid of the offset so below o.4m of the max= 0
     levelRisk = current_levels[:, 1].astype(float)
     levelRisk = (1)/(1.4)*(levelRisk + 0.4)
+    #setting the risk level into an numpy array 
     levelRisk = np.array([[current_levels[i, 0].astype(str), levelRisk[i]] for i in range(len(levelRisk))])
     
 
