@@ -1,28 +1,23 @@
-from floodsystem.flood import stations_level_over_threshold
-from floodsystem.stationdata import build_station_list, update_water_levels
+from floodsystem.stationdata import build_station_list
+from datetime import timedelta
 from floodsystem.datafetcher import fetch_measure_levels
-import datetime
 from floodsystem.plot import plot_water_level_with_fit
-from floodsystem.station import MonitoringStation
+from floodsystem.utils import sort_by_current_levels
 
-def run():
-    """Task 2F"""
+#setting up list of stations 
+stations = build_station_list()
 
-    #create list of stations
-    stations = build_station_list()
-    update_water_levels(stations)
+#sorting the stations into the current water levels 
+tuple = sort_by_current_levels(stations)
 
-    #get highest 5 stations
-    stations_to_plot = (stations_level_over_threshold(stations,0.1))[0:6]
+#assigning a tempoary station with null value 
+temp_station = None
 
-    #print(len(stations_to_plot))
 
-    for item in stations_to_plot:
-        station = item[0]
-            
-        dates, levels = fetch_measure_levels(station.measure_id, dt=datetime.timedelta(days=2))
-        plot_water_level_with_fit(station, dates, levels, 4) 
-
-if  __name__ == "__main__":
-    print("*** Task 2F: CUED Part IA Flood Warning System ***")
-    run()
+for station in stations:
+    for i in range(5):
+        if tuple[i][0] == station.name:
+        
+            temp_station = station
+            dates, levels = fetch_measure_levels(temp_station.measure_id, timedelta(days = 2))
+            plot_water_level_with_fit(temp_station, dates, levels, 4)
