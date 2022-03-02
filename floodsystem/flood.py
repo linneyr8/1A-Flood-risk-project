@@ -108,6 +108,7 @@ def assess_risk(stations):
                                
     """setting the risk level into an numpy array= containing data of the current water levels. 
     astype is used to change the data type of the current water levels into a string. Iterates through each of the stations"""
+    
     levelRisk = np.array([[current_levels[i, 0].astype(str), levelRisk[i]] for i in range(len(levelRisk))])
     
     
