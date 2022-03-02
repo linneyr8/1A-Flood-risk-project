@@ -6,6 +6,7 @@
 """
 
 
+import imp
 from floodsystem.stationdata import update_water_levels
 
 
@@ -31,6 +32,9 @@ def sorted_by_key(x, i, reverse=False):
 
     return sorted(x, key=key, reverse=reverse)
 
+
+from floodsystem.datafetcher import fetch_measure_levels
+from floodsystem.stationdata import update_water_levels
 
 #function for 2F which sorts the stations by the current river levels 
 def sort_by_current_levels(stations):

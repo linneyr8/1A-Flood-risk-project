@@ -16,8 +16,8 @@ temp_station = None
 
 for station in stations:
     for i in range(5):
-        if tuple[i][0] == station.name:
+        ##if tuple[i][0] == station.name:
         
             temp_station = station
             dates, levels = fetch_measure_levels(temp_station.measure_id, timedelta(days = 2))
-            plot_water_level_with_fit(temp_station, dates, levels, 4)df
+            plot_water_level_with_fit(temp_station, dates, levels, 4)
