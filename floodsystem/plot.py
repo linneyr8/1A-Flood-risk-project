@@ -1,5 +1,6 @@
 from datetime import timedelta
 from os import environ
+import matplotlib
 
 import numpy as np
 import datetime
@@ -11,11 +12,12 @@ from bokeh.io import output_file
 from bokeh.layouts import gridplot
 from bokeh.models import ColumnDataSource, GMapOptions, HoverTool, DatetimeTickFormatter, Span, BoxAnnotation
 from bokeh.plotting import figure, gmap
-from matplotlib.dates import date2num
+import matplotlib
 import matplotlib.pyplot as plt
 from floodsystem.stationdata import build_station_list, update_water_levels
 from floodsystem.station import MonitoringStation
 from . import datafetcher
+
 
 #Reece's code 
 def plot_water_levels(station, dates, levels):
@@ -74,4 +76,3 @@ def plot_water_with_levels(station, dates, levels, p):
 
     #Display plot
     plt.show()
-© 2022 GitHub, Inc.
