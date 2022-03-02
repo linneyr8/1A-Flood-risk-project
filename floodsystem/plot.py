@@ -32,6 +32,7 @@ def plot_water_levels(station, dates, levels):
     plt.show()
 
 def plot_water_level_with_fit(station, dates, levels, p):
+
     output_file(station.name + ".html")
     graph = figure(title = station.name, x_axis_label="Date", y_axis_label="Water level (m)")
     graph.line(dates, levels, line_width=2)
@@ -57,3 +58,20 @@ def plot_water_level_with_fit(station, dates, levels, p):
     graph.xaxis.major_label_orientation = np.pi / 4
     return graph
     
+def plot_water_with_levels(station, dates, levels, p):
+    
+    x = matplotlib.dates.date2num(dates)
+    #create polynmial and shift in dates
+    poly, d0 = polyfit(dates, levels, p)
+
+    plt.plot(dates, levels, '.')
+    plt.title(station.name)
+    plt.xticks(rotation=45)
+
+    # Plot polynomial fit at 30 points along interval
+    x1 = np.linspace(x[0], x[-1], 30)
+    plt.plot(x1, poly(x1 - x[0]))
+
+    #Display plot
+    plt.show()
+© 2022 GitHub, Inc.
