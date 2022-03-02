@@ -107,7 +107,7 @@ def assess_risk(stations):
     levelRisk = (1)/(1.4)*(levelRisk + 0.4)
                                
     """setting the risk level into an numpy array= containing data of the current water levels. 
-    astype(str) is used to change the data type of the current water levels into a string. Iterates through each of the stations"""
+    astype is used to change the data type of the current water levels into a string. Iterates through each of the stations"""
     levelRisk = np.array([[current_levels[i, 0].astype(str), levelRisk[i]] for i in range(len(levelRisk))])
     
     
