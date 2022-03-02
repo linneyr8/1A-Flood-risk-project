@@ -37,6 +37,3 @@ def plot_risk(stations):
     #printing just the values/points which would of been plotted on the graph 
     plt.show()
 
-if  __name__ == "__main__":
-    print("*** Task 2G: CUED Part IA Flood Warning System ***")
-    run()
