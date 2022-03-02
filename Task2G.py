@@ -5,13 +5,13 @@ from floodsystem.analysis import polyfit
 
 
 def plot_risk(stations):
-    Low = 0
+    Low = 0                                                  
     Moderate = 0
     High = 0 
     Severe = 0
     for station in stations:
-        if station.risk == 'Low':
-            Low += 1
+        if station.risk == 'Low':                           #determining if the two objects are equal
+            Low += 1                                        # if it is then assign the value low to that station
         elif station.risk == 'Moderate':
             Moderate += 1
         elif station.risk == 'High':
@@ -37,3 +37,6 @@ def plot_risk(stations):
     #printing just the values/points which would of been plotted on the graph 
     plt.show()
 
+if  __name__ == "__main__":
+    print("*** Task 2G: CUED Part IA Flood Warning System ***")
+    run()
