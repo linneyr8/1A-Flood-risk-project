@@ -5,7 +5,7 @@ import matplotlib
 import numpy as np
 import datetime
 from os import environ
-from analysis import polyfit
+from .analysis import polyfit
 from .datafetcher import fetch_measure_levels
 import numpy as np
 from bokeh.io import output_file
